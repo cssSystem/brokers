@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+flyway:
+  enabled: true
+  locations:
+    classpath:db
+  baseline-on-migrate: true
+  clean-on-validation-error: true
+
+spring:
+  amqp:
+    deserialization:
+      trust-all: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      enable-metrics-push: false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+kafka:
+  topics:
+    loan-applications: loan-applications
+
+rabbitmq:
+  queues:
+    credit-decisions: credit-decisions
+
+

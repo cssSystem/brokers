@@ -1,0 +1,31 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: loan-applications
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        session.timeout.ms: 30000
+        heartbeat.interval.ms: 10000
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+kafka:
+  topics:
+    loan-applications: loan-applications
+
+rabbitmq:
+  queues:
+    loan-applications: loan-applications

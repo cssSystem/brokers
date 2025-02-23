@@ -1,0 +1,14 @@
+### Заявка на кредит
+POST http://localhost:8080/api/loan-app
+Content-Type: application/json
+
+{
+    "loanAmount":100000,
+    "loanTerm":10,
+    "usersIncome":20001,
+    "creditLoad":1,
+    "creditRating":1
+}
+
+### Решение заявки по ID
+GET http://localhost:8080/api/loan-app/1
